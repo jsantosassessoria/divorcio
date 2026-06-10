@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Johnattan Santos | Advocacia em Direito de Família – Rio de Janeiro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:    #0D1B2A;
+      --navy2:   #152336;
+      --gold:    #C9A84C;
+      --gold-lt: #E0C878;
+      --ice:     #F7F5F0;
+      --mid:     #8A8A8A;
+      --white:   #FFFFFF;
+      --text:    #1C2B3A;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--ice);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 6vw;
+      background: rgba(13,27,42,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-weight: 600;
+      color: var(--gold); letter-spacing: 0.04em;
+    }
+    .nav-logo span { color: var(--white); font-weight: 400; }
+    .nav-cta {
+      background: var(--gold); color: var(--navy);
+      font-size: 0.8rem; font-weight: 600;
+      padding: 9px 22px; border-radius: 2px;
+      text-decoration: none; letter-spacing: 0.06em;
+      text-transform: uppercase; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--gold-lt); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(160deg, var(--navy) 0%, var(--navy2) 60%, #1a2d40 100%);
+      display: flex; align-items: center; justify-content: center;
+      padding: 120px 6vw 80px; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 80% 50%, rgba(201,168,76,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-scales {
+      position: absolute; right: 4vw; top: 50%;
+      transform: translateY(-50%);
+      width: min(380px, 42vw); opacity: 0.12;
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(-50%) translateY(0); }
+      50%       { transform: translateY(-50%) translateY(-14px); }
+    }
+    .hero-inner { max-width: 680px; position: relative; z-index: 1; }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); font-weight: 500;
+      border-left: 2px solid var(--gold); padding-left: 12px;
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      line-height: 1.15; font-weight: 700;
+      color: var(--white); margin-bottom: 24px;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+    .hero-sub {
+      font-size: 1.05rem; color: rgba(255,255,255,0.7);
+      max-width: 520px; margin-bottom: 44px; line-height: 1.75;
+    }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold); color: var(--navy);
+      font-weight: 700; font-size: 0.9rem;
+      padding: 16px 36px; border-radius: 2px;
+      text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-flex; align-items: center; gap: 10px;
+    }
+    .btn-primary:hover { background: var(--gold-lt); transform: translateY(-2px); }
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.3); color: var(--white);
+      font-size: 0.9rem; padding: 16px 32px; border-radius: 2px;
+      text-decoration: none; letter-spacing: 0.04em;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+    .hero-trust { margin-top: 56px; display: flex; gap: 32px; flex-wrap: wrap; }
+    .hero-stat .number {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem; color: var(--gold); font-weight: 700;
+    }
+    .hero-stat .label {
+      font-size: 0.75rem; color: rgba(255,255,255,0.5);
+      letter-spacing: 0.06em; text-transform: uppercase; margin-top: 2px;
+    }
+    .stat-divider { width: 1px; background: rgba(255,255,255,0.12); align-self: stretch; }
+
+    /* INFO SECTION */
+    .info-section {
+      background: var(--white); padding: 88px 6vw; text-align: center;
+    }
+    .section-eyebrow {
+      font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--gold); font-weight: 600; margin-bottom: 16px;
+    }
+    .info-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      color: var(--navy); max-width: 620px; margin: 0 auto 16px;
+    }
+    .info-section .section-sub {
+      color: var(--mid); font-size: 1rem; max-width: 520px;
+      margin: 0 auto 56px; line-height: 1.8;
+    }
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px; max-width: 900px; margin: 0 auto;
+    }
+    .info-card {
+      background: var(--ice);
+      border: 1px solid rgba(13,27,42,0.07);
+      padding: 28px 24px; border-radius: 4px; text-align: left;
+      border-top: 3px solid var(--gold);
+    }
+    .info-card .icon { font-size: 1.6rem; margin-bottom: 14px; }
+    .info-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; color: var(--navy); margin-bottom: 8px; font-weight: 600;
+    }
+    .info-card p { font-size: 0.88rem; color: var(--mid); line-height: 1.7; }
+
+    /* ABOUT */
+    .about {
+      background: var(--navy); padding: 96px 6vw;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .about-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; max-width: 1100px; width: 100%; align-items: center;
+    }
+    .about-photo-bg {
+      width: 100%; aspect-ratio: 4/5;
+      background: linear-gradient(135deg, #1a3050, #0f2035);
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .photo-initial {
+      font-family: 'Playfair Display', serif;
+      font-size: 7rem; font-weight: 700;
+      color: rgba(201,168,76,0.15); user-select: none;
+    }
+    .about-badge {
+      position: absolute; bottom: -16px; right: -16px;
+      background: var(--gold); color: var(--navy);
+      padding: 14px 18px; border-radius: 4px;
+      font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      line-height: 1.4; text-align: center; z-index: 2;
+    }
+    .about-badge span { display: block; font-weight: 400; font-size: 0.7rem; opacity: 0.8; }
+    .about-content .section-eyebrow { text-align: left; }
+    .about-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.7rem, 2.8vw, 2.4rem);
+      color: var(--white); line-height: 1.2; margin-bottom: 24px;
+    }
+    .about-content p {
+      color: rgba(255,255,255,0.65); font-size: 0.95rem;
+      line-height: 1.85; margin-bottom: 20px;
+    }
+    .about-list { list-style: none; margin: 28px 0 36px; }
+    .about-list li {
+      color: rgba(255,255,255,0.8); font-size: 0.92rem;
+      padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex; align-items: flex-start; gap: 12px;
+    }
+    .about-list li::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+    .oab-tag {
+      display: inline-block; font-size: 0.75rem; color: var(--gold);
+      border: 1px solid rgba(201,168,76,0.3);
+      padding: 6px 14px; border-radius: 2px; letter-spacing: 0.08em;
+    }
+
+    /* SERVICES */
+    .services { padding: 96px 6vw; background: var(--ice); text-align: center; }
+    .services h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      color: var(--navy); margin-bottom: 12px;
+    }
+    .services-sub {
+      color: var(--mid); font-size: 1rem;
+      max-width: 480px; margin: 0 auto 56px; line-height: 1.8;
+    }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px; max-width: 1100px; margin: 0 auto;
+    }
+    .service-card {
+      background: var(--white); padding: 40px 32px;
+      border-radius: 4px; text-align: left;
+      border: 1px solid rgba(13,27,42,0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(13,27,42,0.1); }
+    .service-card.featured { background: var(--navy); border-color: transparent; }
+    .service-card.featured h3 { color: var(--white); }
+    .service-card.featured p { color: rgba(255,255,255,0.6); }
+    .service-card.featured .service-tag { color: var(--gold); }
+    .service-icon { font-size: 2rem; margin-bottom: 20px; }
+    .service-tag {
+      font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gold); font-weight: 600; margin-bottom: 10px;
+    }
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; color: var(--navy); margin-bottom: 12px; font-weight: 600;
+    }
+    .service-card p { font-size: 0.88rem; color: var(--mid); line-height: 1.75; }
+
+    /* PROCESS */
+    .process { background: var(--white); padding: 96px 6vw; text-align: center; }
+    .process h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      color: var(--navy); margin-bottom: 12px;
+    }
+    .process-sub {
+      color: var(--mid); font-size: 1rem;
+      max-width: 480px; margin: 0 auto 64px; line-height: 1.8;
+    }
+    .process-steps {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0; max-width: 1000px; margin: 0 auto;
+    }
+    .process-step { padding: 0 24px 40px; }
+    .step-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem; font-weight: 700;
+      color: rgba(201,168,76,0.18); line-height: 1; margin-bottom: 4px;
+    }
+    .step-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; color: var(--navy); font-weight: 600; margin-bottom: 10px;
+    }
+    .step-desc { font-size: 0.86rem; color: var(--mid); line-height: 1.75; }
+
+    /* AVISO OAB */
+    .oab-notice {
+      background: var(--navy); padding: 32px 6vw; text-align: center;
+    }
+    .oab-notice p {
+      font-size: 0.8rem; color: rgba(255,255,255,0.4);
+      max-width: 720px; margin: 0 auto; line-height: 1.8;
+    }
+    .oab-notice strong { color: rgba(255,255,255,0.6); }
+
+    /* CONTATO */
+    .cta-section { background: var(--ice); padding: 96px 6vw; text-align: center; }
+    .cta-box {
+      background: var(--navy); max-width: 780px; margin: 0 auto;
+      padding: 64px 48px; border-radius: 6px;
+      position: relative; overflow: hidden;
+    }
+    .cta-box::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .cta-box .section-eyebrow { color: var(--gold-lt); text-align: center; }
+    .cta-box h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      color: var(--white); margin-bottom: 16px;
+    }
+    .cta-box p {
+      color: rgba(255,255,255,0.6); font-size: 0.95rem;
+      max-width: 520px; margin: 0 auto 40px; line-height: 1.8;
+    }
+    .cta-channels { display: flex; flex-direction: column; gap: 14px; align-items: center; }
+    .btn-whatsapp {
+      background: #25D366; color: #fff;
+      font-weight: 700; font-size: 1rem;
+      padding: 18px 48px; border-radius: 2px;
+      text-decoration: none; letter-spacing: 0.04em;
+      display: inline-flex; align-items: center; gap: 12px;
+      transition: background 0.2s, transform 0.15s; width: fit-content;
+    }
+    .btn-whatsapp:hover { background: #1fb858; transform: translateY(-2px); }
+    .cta-alt { font-size: 0.82rem; color: rgba(255,255,255,0.35); }
+    .cta-alt a { color: var(--gold); text-decoration: none; }
+    .cta-disclaimer {
+      margin-top: 28px; font-size: 0.75rem;
+      color: rgba(255,255,255,0.25); line-height: 1.6;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #070f18; padding: 48px 6vw;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 20px;
+    }
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold); font-size: 1rem; font-weight: 600;
+    }
+    .footer-brand span { color: rgba(255,255,255,0.4); font-weight: 400; }
+    .footer-info { font-size: 0.78rem; color: rgba(255,255,255,0.25); line-height: 1.8; }
+    .footer-info a { color: rgba(255,255,255,0.35); text-decoration: none; }
+
+    /* FLOATING WA */
+    .floating-wa { position: fixed; bottom: 28px; right: 28px; z-index: 200; }
+    .floating-wa a {
+      display: flex; align-items: center; justify-content: center;
+      width: 58px; height: 58px;
+      background: #25D366; border-radius: 50%;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.4);
+      text-decoration: none; font-size: 1.5rem;
+      animation: pulse-wa 2.5s ease-in-out infinite;
+      transition: transform 0.15s;
+    }
+    .floating-wa a:hover { transform: scale(1.1); }
+    @keyframes pulse-wa {
+      0%, 100% { box-shadow: 0 6px 24px rgba(37,211,102,0.4); }
+      50%       { box-shadow: 0 6px 36px rgba(37,211,102,0.65); }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .about-photo-bg { aspect-ratio: 3/2; }
+      .hero-scales { display: none; }
+      .cta-box { padding: 44px 28px; }
+      nav .nav-cta { display: none; }
+      .hero-trust { gap: 20px; }
+      .stat-divider { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-scales, .floating-wa a { animation: none; }
+      .btn-primary:hover, .service-card:hover, .btn-whatsapp:hover { transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Johnattan Santos <span>Advocacia</span></div>
+    <a class="nav-cta" href="#contato">Entre em contato</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <svg class="hero-scales" viewBox="0 0 300 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="150" y1="30" x2="150" y2="300" stroke="#C9A84C" stroke-width="2.5"/>
+      <rect x="130" y="14" width="40" height="6" rx="3" fill="#C9A84C"/>
+      <circle cx="150" cy="17" r="8" fill="none" stroke="#C9A84C" stroke-width="2.5"/>
+      <line x1="150" y1="100" x2="50" y2="150" stroke="#C9A84C" stroke-width="2"/>
+      <line x1="150" y1="100" x2="250" y2="130" stroke="#C9A84C" stroke-width="2"/>
+      <rect x="16" y="150" width="68" height="52" rx="26" fill="none" stroke="#C9A84C" stroke-width="2"/>
+      <rect x="216" y="130" width="68" height="52" rx="26" fill="none" stroke="#C9A84C" stroke-width="2"/>
+      <rect x="132" y="296" width="36" height="12" rx="4" fill="#C9A84C" opacity="0.7"/>
+    </svg>
+
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Direito de Família · Divórcio · Rio de Janeiro</div>
+      <h1>Assessoria jurídica em <em>Direito de Família</em> no Rio de Janeiro</h1>
+      <p class="hero-sub">O Dr. Johnattan Santos oferece orientação jurídica especializada em processos de divórcio — consensuais e litigiosos — auxiliando na compreensão dos seus direitos e das etapas do processo.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="https://wa.me/5521999999999?text=Olá,%20gostaria%20de%20informações%20sobre%20assessoria%20jurídica%20em%20divórcio" target="_blank" rel="noopener">
+          💬 Entrar em contato
+        </a>
+        <a class="btn-secondary" href="#servicos">Áreas de atuação</a>
+      </div>
+      <div class="hero-trust">
+        <div class="hero-stat">
+          <div class="number">12+</div>
+          <div class="label">anos de atuação</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="hero-stat">
+          <div class="number">RJ</div>
+          <div class="label">todo o estado</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="hero-stat">
+          <div class="number">OAB</div>
+          <div class="label">255.293</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFO: O QUE VOCÊ PRECISA SABER -->
+  <section class="info-section">
+    <div class="section-eyebrow">Informação jurídica</div>
+    <h2>Entenda o processo de divórcio no Brasil</h2>
+    <p class="section-sub">Conhecer os aspectos jurídicos envolvidos é o primeiro passo para tomar decisões bem informadas sobre sua situação.</p>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="icon">🏠</div>
+        <h3>Partilha de bens</h3>
+        <p>A divisão do patrimônio segue o regime de bens escolhido no casamento. Cada regime — comunhão parcial, total ou separação — tem regras específicas previstas no Código Civil.</p>
+      </div>
+      <div class="info-card">
+        <div class="icon">👶</div>
+        <h3>Guarda dos filhos</h3>
+        <p>A legislação brasileira prevê guarda unilateral e compartilhada. O acordo sobre convivência, visitas e responsabilidades parentais deve ser formalizado juridicamente para ter validade legal.</p>
+      </div>
+      <div class="info-card">
+        <div class="icon">💰</div>
+        <h3>Alimentos</h3>
+        <p>O valor e a duração dos alimentos — para filhos ou cônjuge — são definidos com base nas necessidades de quem recebe e na capacidade financeira de quem paga, conforme critérios legais.</p>
+      </div>
+      <div class="info-card">
+        <div class="icon">📄</div>
+        <h3>Vias do processo</h3>
+        <p>Quando há consenso entre as partes e sem filhos menores, o divórcio pode ser feito extrajudicialmente em cartório. Havendo disputas ou filhos, a via judicial é obrigatória.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="sobre">
+    <div class="about-inner">
+      <div style="position:relative;">
+        <div class="about-photo-bg">
+          <div class="photo-initial">JS</div>
+        </div>
+        <div class="about-badge">
+          OAB/RJ<br>255.293
+          <span>Registro ativo</span>
+        </div>
+      </div>
+      <div class="about-content">
+        <div class="section-eyebrow">Sobre o advogado</div>
+        <h2>Dr. Johnattan Santos</h2>
+        <p>Advogado inscrito na OAB/RJ sob o nº 255.293, com atuação há mais de 12 anos na área de Direito de Família no Rio de Janeiro. Atende casos de divórcio consensual e litigioso, partilha de bens, guarda e alimentos.</p>
+        <p>Seu trabalho é orientado pela escuta atenta e pelo compromisso com a clareza jurídica — para que cada cliente compreenda seus direitos e as opções disponíveis em cada etapa do processo.</p>
+        <ul class="about-list">
+          <li>Direito de Família e Sucessões</li>
+          <li>Divórcios consensuais e litigiosos</li>
+          <li>Procedimentos judiciais e extrajudiciais</li>
+          <li>Atendimento presencial e remoto no Estado do RJ</li>
+          <li>Sigilo profissional assegurado pelo Estatuto da OAB</li>
+        </ul>
+        <span class="oab-tag">OAB/RJ 255.293</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="servicos">
+    <div class="section-eyebrow">Áreas de atuação</div>
+    <h2>Modalidades de atendimento</h2>
+    <p class="services-sub">A escolha da via processual adequada depende das circunstâncias de cada caso. Conheça as principais modalidades.</p>
+    <div class="services-grid">
+      <div class="service-card featured">
+        <div class="service-icon">✍️</div>
+        <div class="service-tag">Divórcio Consensual</div>
+        <h3>Acordo entre as partes</h3>
+        <p>Quando cônjuges chegam a um entendimento sobre todos os pontos — bens, filhos e alimentos —, o processo pode tramitar extrajudicialmente em cartório, com prazo reduzido.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⚖️</div>
+        <div class="service-tag">Divórcio Litigioso</div>
+        <h3>Via judicial</h3>
+        <p>Quando não há acordo entre as partes, a dissolução do casamento é conduzida pelo Poder Judiciário, com análise de cada ponto — bens, guarda e alimentos — pelo magistrado.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🤝</div>
+        <div class="service-tag">Mediação Familiar</div>
+        <h3>Resolução dialogada</h3>
+        <p>A mediação é um procedimento estruturado que auxilia os cônjuges a chegarem a acordos de forma mais ágil, preservando o diálogo, especialmente quando há filhos envolvidos.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <div class="service-tag">Revisão de Cláusulas</div>
+        <h3>Alterações pós-divórcio</h3>
+        <p>Mudanças na renda, no cotidiano dos filhos ou em outras circunstâncias podem justificar a revisão judicial de acordos já homologados, como pensão ou regime de convivência.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="como-funciona">
+    <div class="section-eyebrow">Etapas do atendimento</div>
+    <h2>Como funciona o acompanhamento jurídico</h2>
+    <p class="process-sub">Da primeira orientação ao encerramento do processo, cada etapa é conduzida com transparência e atenção ao caso concreto.</p>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-number">01</div>
+        <div class="step-title">Consulta inicial</div>
+        <p class="step-desc">Reunião sigilosa para análise da situação, esclarecimento de dúvidas e identificação da via processual mais adequada ao caso.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">02</div>
+        <div class="step-title">Análise documental</div>
+        <p class="step-desc">Levantamento e revisão dos documentos necessários: certidão de casamento, regime de bens, escrituras, registros de filhos e demais elementos relevantes.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">03</div>
+        <div class="step-title">Condução do processo</div>
+        <p class="step-desc">Protocolo dos atos jurídicos cabíveis, acompanhamento das audiências e comunicação regular sobre o andamento do processo.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">04</div>
+        <div class="step-title">Homologação</div>
+        <p class="step-desc">Com a sentença ou escritura lavrada, a situação jurídica fica regularizada. Orientamos sobre os próximos passos e registros necessários.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AVISO LEGAL OAB -->
+  <section class="oab-notice">
+    <p>
+      <strong>Aviso legal:</strong> Este site tem caráter exclusivamente informativo, nos termos do art. 39 do Código de Ética e Disciplina da OAB e do Provimento nº 205/2021 do Conselho Federal da OAB. As informações aqui contidas não constituem aconselhamento jurídico individualizado nem promessa de resultado. Cada caso possui características próprias que devem ser analisadas por profissional habilitado.
+    </p>
+  </section>
+
+  <!-- CONTATO -->
+  <section class="cta-section" id="contato">
+    <div class="cta-box">
+      <div class="section-eyebrow">Atendimento personalizado</div>
+      <h2>Entre em contato para uma consulta</h2>
+      <p>Para esclarecer dúvidas sobre o seu caso ou agendar uma consulta com o Dr. Johnattan Santos, utilize os canais abaixo. O atendimento é sigiloso e personalizado.</p>
+      <div class="cta-channels">
+        <a class="btn-whatsapp" href="https://wa.me/5521999999999?text=Olá%20Dr.%20Johnattan,%20gostaria%20de%20agendar%20uma%20consulta%20sobre%20divórcio" target="_blank" rel="noopener">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Falar pelo WhatsApp
+        </a>
+        <div class="cta-alt">E-mail: <a href="mailto:contato@johnattansantos.adv.br">contato@johnattansantos.adv.br</a></div>
+      </div>
+      <p class="cta-disclaimer">
+        As informações compartilhadas nesta consulta são protegidas pelo sigilo profissional, nos termos do Estatuto da OAB.<br>
+        OAB/RJ 255.293 · Atuação em todo o Estado do Rio de Janeiro.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <div class="footer-brand">Johnattan Santos <span>Advocacia</span></div>
+      <div class="footer-info" style="margin-top:8px;">OAB/RJ 255.293 · Rio de Janeiro, RJ</div>
+    </div>
+    <div class="footer-info" style="text-align:right;">
+      © 2025 Johnattan Santos Advocacia<br>
+      <a href="#">Política de Privacidade</a> · <a href="#">Termos de Uso</a>
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP -->
+  <div class="floating-wa">
+    <a href="https://wa.me/5521999999999?text=Olá%20Dr.%20Johnattan,%20gostaria%20de%20informações%20sobre%20divórcio" target="_blank" rel="noopener" title="Falar pelo WhatsApp">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    </a>
+  </div>
+
+</body>
+</html>
